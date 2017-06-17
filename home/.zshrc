@@ -14,5 +14,9 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # Load the theme.
 antigen theme robbyrussell
 
+# Notifies when running command finished. Dependencies:
+# yaourt -S wmctrl xdotool
+antigen bundle marzocchi/zsh-notify
+
 # Tell Antigen that you're done.
 antigen apply
