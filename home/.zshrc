@@ -12,7 +12,9 @@ antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme robbyrussell
+antigen bundle dfurnes/purer
+PURE_PROMPT_SYMBOL_COLOR=blue
+PURE_CMD_MAX_EXEC_TIME=10
 
 # Notifies when running command finished. Dependencies:
 # yaourt -S wmctrl xdotool
