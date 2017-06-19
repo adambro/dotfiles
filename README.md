@@ -2,6 +2,8 @@
 
 The idea is all files and directories in `./home` folder get symlinked to the actual user home folder.
 
+    cd ~/ && for FILE in ~/.dotfiles/home/.*; do ln -s $FILE . ; done;
+
 ### ZSH
 
-    ln -s .dotfiles/home/.zshrc .
+Uses Antigen to manage ZSH plugins.
