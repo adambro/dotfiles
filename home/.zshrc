@@ -25,3 +25,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Tell Antigen that you're done.
 antigen apply
+
+# aliases
+alias vi=vim
