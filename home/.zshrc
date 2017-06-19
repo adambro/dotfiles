@@ -9,6 +9,7 @@ antigen bundle git
 antigen bundle command-not-found
 
 # Load the theme.
+antigen bundle mafredri/zsh-async
 antigen bundle dfurnes/purer
 PURE_PROMPT_SYMBOL_COLOR=blue
 PURE_CMD_MAX_EXEC_TIME=10
