@@ -1,0 +1,11 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "workbench.colorTheme": "Solarized Dark",
+    "window.menuBarVisibility": "toggle",
+    "search.exclude": {
+        "**/node_modules": true,
+        "./service/node_modules/@sss": false,
+        "**/bower_components": true
+    },
+    "files.trimTrailingWhitespace": true
+}
