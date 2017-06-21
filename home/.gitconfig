@@ -12,24 +12,27 @@
 	ci = commit
 	co = checkout
 	br = branch
-	
+
 	# http://rudygems.com/post/1085402153/git-pp-git-push-git-pull
 	pp = !sh -c 'git pull --rebase && git push'
-	
+
 	# unadd - removes files/directories from staging
 	# http://www.robo47.net/blog/208-Git-Aliases-Submodules-and-Symfony
 	unadd = reset HEAD --
-	
+
 	# list all aliases
 	aliases = config --get-regexp alias
-	
+
 	# top committers
-	committers = shortlog --numbered --summary 
+	committers = shortlog --numbered --summary
 	master = checkout master
+	dev = checkout develop
+	amend = commit --amend
+
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 
-    # remove merged brances, see http://stackoverflow.com/a/21857717 
-    cleanbranches = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+	# remove merged branches, see http://stackoverflow.com/a/21857717
+	cleanbranches = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
 
 	dsf = "!git diff --color $@ | diff-so-fancy"
 
@@ -39,11 +42,20 @@
 	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
 	bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
 
-	amend = commit --amend
+	undo = "!f() { \\\n    git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; \\\n}; f"
+
+	# https://blog.scottnonnenberg.com/better-git-configuration/
+	prune = fetch --prune
+	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+
 [core]
 	editor = vim -c start
 	autocrlf = input
 [push]
-    default = current
+	default = current
 [pull]
 	rebase = true
+[status]
+	showUntrackedFiles = all
+	# Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
+	# https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
