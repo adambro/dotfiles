@@ -7,5 +7,7 @@
         "./service/node_modules/@sss": false,
         "**/bower_components": true
     },
-    "files.trimTrailingWhitespace": true
+    "editor.trimAutoWhitespace": false,
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "onWindowChange"
 }
