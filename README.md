@@ -7,6 +7,7 @@ The idea is all files and directories in `./home` folder get symlinked to the ac
 ### ZSH
 
 Uses Antigen to manage ZSH plugins.
+`zsh-notify` plugin requires `wmctrl` and `xdotool` tools to be installed (available in Ubuntu and Arch repos).
 
 ### Visual Studio Code
 
