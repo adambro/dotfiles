@@ -28,3 +28,9 @@ antigen apply
 
 # aliases
 alias vi=vim
+
+# Fix a problem with CWD on Tilix and Gnome Terminal
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
