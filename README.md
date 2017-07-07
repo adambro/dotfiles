@@ -15,3 +15,13 @@ Uses Antigen to manage ZSH plugins.
 ln -s ~/.dotfiles/Code/settings.json ~/.config/Code/User/settings.json
 ln -s ~/.dotfiles/Code/snippets/ ~/.config/Code/User/snippets
 ```
+
+VS Code extensions via `code --list-extensions` command:
+
+```
+PeterJausovec.vscode-docker
+eamodio.gitlens
+jasonnutter.search-node-modules
+kisstkondoros.vscode-codemetrics
+ziyasal.vscode-open-in-github
+```
