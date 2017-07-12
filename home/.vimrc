@@ -92,4 +92,9 @@ endif
 
 inoremap <C-U> <C-G>u<C-U>
 
+" Adam's additions
+" spell checking for *.md and git commit https://robots.thoughtbot.com/vim-spell-checking
+autocmd FileType gitcommit setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell
+
 " vim:set ft=vim et sw=2:
