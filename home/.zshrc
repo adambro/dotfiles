@@ -17,6 +17,8 @@ PURE_CMD_MAX_EXEC_TIME=10
 # Notifies when running command finished. Dependencies:
 # yaourt -S wmctrl xdotool
 antigen bundle marzocchi/zsh-notify
+zstyle ':notify:*' error-icon dialog-error
+zstyle ':notify:*' success-icon dialog-information
 
 antigen bundle zsh-users/zsh-autosuggestions
 
