@@ -96,5 +96,8 @@ inoremap <C-U> <C-G>u<C-U>
 " spell checking for *.md and git commit https://robots.thoughtbot.com/vim-spell-checking
 autocmd FileType gitcommit setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal spell
+" Set spellfile to location that is guaranteed to exist, can be symlinked to
+" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
+set spellfile=$HOME/.vim-spell-en.utf-8.add
 
 " vim:set ft=vim et sw=2:
