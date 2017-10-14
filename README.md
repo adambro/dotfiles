@@ -20,7 +20,10 @@ VS Code extensions via `code --list-extensions` command:
 
 ```
 PeterJausovec.vscode-docker
+alexnesnes.makeRunner
+dbaeumer.vscode-eslint
 eamodio.gitlens
+formulahendry.code-runner
 jasonnutter.search-node-modules
 kisstkondoros.vscode-codemetrics
 ziyasal.vscode-open-in-github
