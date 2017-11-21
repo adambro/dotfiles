@@ -54,7 +54,7 @@
 [push]
 	default = current
 [pull]
-	rebase = true
+	rebase = false
 [status]
 	showUntrackedFiles = all
 	# Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
