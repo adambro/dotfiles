@@ -30,6 +30,8 @@ antigen apply
 
 # aliases
 alias vi=vim
+alias m=make
+alias d=docker
 
 # Fix a problem with CWD on Tilix and Gnome Terminal
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
