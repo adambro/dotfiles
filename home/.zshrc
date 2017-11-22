@@ -7,6 +7,7 @@ antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git
 antigen bundle command-not-found
+antigen bundle z
 
 # BitBucket integration, requires `ruby` installed
 antigen bundle unixorn/bitbucket-git-helpers.plugin.zsh
