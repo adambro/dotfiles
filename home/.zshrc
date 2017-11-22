@@ -8,6 +8,9 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle command-not-found
 
+# BitBucket integration, requires `ruby` installed
+antigen bundle unixorn/bitbucket-git-helpers.plugin.zsh
+
 # Load the theme.
 antigen bundle mafredri/zsh-async
 antigen bundle dfurnes/purer
