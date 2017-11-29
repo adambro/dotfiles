@@ -32,10 +32,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # Tell Antigen that you're done.
 antigen apply
 
-# aliases
-alias vi=vim
-alias m=make
-alias d=docker
+source .aliases
 
 # Fix a problem with CWD on Tilix and Gnome Terminal
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then

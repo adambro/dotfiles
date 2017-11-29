@@ -1,0 +1,15 @@
+# aliases for ZSH and Bash
+alias vi=vim
+alias m=make
+alias d=docker
+alias fig=docker-compose
+alias g=git
+
+# making GNU commands more user-friendly, not Unix-friendly
+# http://t-a-w.blogspot.com/2010/03/small-tips-for-making-unix-programming.html
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias df='df -h'
+alias du='du --block-size=M'
+
