@@ -13,5 +13,6 @@
     "terminal.integrated.shell.linux": "/bin/zsh",
     "editor.minimap.enabled": false,
     "explorer.decorations.colors": false,
-    "explorer.decorations.badges": true
+    "explorer.decorations.badges": true,
+    "javascript.implicitProjectConfig.checkJs": true
 }
