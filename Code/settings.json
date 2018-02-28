@@ -14,5 +14,7 @@
     "editor.minimap.enabled": false,
     "explorer.decorations.colors": false,
     "explorer.decorations.badges": true,
-    "javascript.implicitProjectConfig.checkJs": true
+    "javascript.implicitProjectConfig.checkJs": false,
+    "extensions.ignoreRecommendations": false,
+    "terminal.integrated.fontSize": 15
 }
