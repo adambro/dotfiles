@@ -4,6 +4,7 @@ alias m=make
 alias d=docker
 alias fig=docker-compose
 alias g=git
+alias trash="gio trash"
 
 # making GNU commands more user-friendly, not Unix-friendly
 # http://t-a-w.blogspot.com/2010/03/small-tips-for-making-unix-programming.html
