@@ -16,5 +16,15 @@
     "explorer.decorations.badges": true,
     "javascript.implicitProjectConfig.checkJs": false,
     "extensions.ignoreRecommendations": false,
-    "terminal.integrated.fontSize": 15
+    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.copyOnSelection": true,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": true
+    }
 }
