@@ -18,11 +18,8 @@ antigen bundle dfurnes/purer
 PURE_PROMPT_SYMBOL_COLOR=blue
 PURE_CMD_MAX_EXEC_TIME=10
 
-# Notifies when running command finished. Dependencies:
-# yaourt -S wmctrl xdotool
-antigen bundle marzocchi/zsh-notify
-zstyle ':notify:*' error-icon dialog-error
-zstyle ':notify:*' success-icon dialog-information
+# Notifies when running command finished. 
+antigen bundle t413/zsh-background-notify
 
 antigen bundle zsh-users/zsh-autosuggestions
 
