@@ -29,5 +29,9 @@
         "suppressShowKeyBindingsNotice": true
     },
     "git.autofetch": true,
-    "gitlens.keymap": "alternate"
+    "gitlens.keymap": "alternate",
+    "gitlens.historyExplorer.enabled": true,
+    "terminal.integrated.rendererType": "dom",
+    "explorer.confirmDelete": false,
+    "breadcrumbs.enabled": true
 }
