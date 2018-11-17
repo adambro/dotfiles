@@ -19,12 +19,25 @@ ln -s ~/.dotfiles/Code/snippets/ ~/.config/Code/User/snippets
 VS Code extensions via `code --list-extensions` command:
 
 ```
-PeterJausovec.vscode-docker
-alexnesnes.makeRunner
+castwide.solargraph
+christian-kohler.npm-intellisense
+cssho.vscode-svgviewer
 dbaeumer.vscode-eslint
+dbankier.vscode-quick-select
 eamodio.gitlens
+eg2.vscode-npm-script
+formulahendry.auto-close-tag
+formulahendry.auto-complete-tag
+formulahendry.auto-rename-tag
 formulahendry.code-runner
 jasonnutter.search-node-modules
 kisstkondoros.vscode-codemetrics
+mikestead.dotenv
+ms-vscode.azure-account
+naereen.makefiles-support-for-vscode
+PeterJausovec.vscode-docker
+quicktype.quicktype
+rebornix.ruby
+WallabyJs.quokka-vscode
 ziyasal.vscode-open-in-github
 ```
