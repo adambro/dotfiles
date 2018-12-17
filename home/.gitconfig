@@ -31,9 +31,6 @@
 
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 
-	# remove merged branches, see http://stackoverflow.com/a/21857717
-	cleanbranches = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
-
 	dsf = "!git diff --color $@ | diff-so-fancy"
 
 	# http://haacked.com/archive/2014/07/28/github-flow-aliases/
@@ -46,7 +43,6 @@
 
 	# https://blog.scottnonnenberg.com/better-git-configuration/
 	prune = fetch --prune
-	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
 [core]
 	editor = vim -c start
