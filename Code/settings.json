@@ -33,5 +33,7 @@
     "gitlens.historyExplorer.enabled": true,
     "terminal.integrated.rendererType": "dom",
     "explorer.confirmDelete": false,
-    "breadcrumbs.enabled": true
+    "breadcrumbs.enabled": true,
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true
 }
