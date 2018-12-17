@@ -44,6 +44,8 @@
 	# https://blog.scottnonnenberg.com/better-git-configuration/
 	prune = fetch --prune
 
+	# finding hot code, from refactoring course
+	hotspots = "!f() { git log --since="${1-1970-01-01}" --format=format: --name-only | grep . | sort | uniq -c | sort -rn; }; f"
 [core]
 	editor = vim -c start
 	autocrlf = input
