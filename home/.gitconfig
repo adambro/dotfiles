@@ -35,7 +35,7 @@
 
 	# http://haacked.com/archive/2014/07/28/github-flow-aliases/
 	cob = checkout -b
-	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+	up = !git pull --prune $@ && git submodule update --init --recursive
 	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
 	bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
 
