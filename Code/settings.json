@@ -35,5 +35,6 @@
     "explorer.confirmDelete": false,
     "breadcrumbs.enabled": true,
     "gitlens.views.fileHistory.enabled": true,
-    "gitlens.views.lineHistory.enabled": true
+    "gitlens.views.lineHistory.enabled": true,
+    "window.titleBarStyle": "custom"
 }
