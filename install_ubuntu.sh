@@ -1,15 +1,15 @@
 #!/bin/sh
 
 # track the system config in local git repo
-sudo apt install etckeeper git
+sudo apt install -y etckeeper git
 
 # ZSH as default shell + Antigen + plugin dependencies
-sudo apt install zsh-antigen wmctrl xdotool
+sudo apt install -y zsh-antigen wmctrl xdotool
 echo '/usr/share/zsh-antigen/antigen.zsh'
 chsh -s $(which zsh)
 
 # CLI tools
-sudo apt install vim htop silversearcher-ag 
+sudo apt install -y vim htop silversearcher-ag
 
 # VS Code
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
