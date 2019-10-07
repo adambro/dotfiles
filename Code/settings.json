@@ -36,5 +36,7 @@
     "breadcrumbs.enabled": true,
     "gitlens.views.fileHistory.enabled": true,
     "gitlens.views.lineHistory.enabled": true,
-    "window.titleBarStyle": "custom"
+    "window.titleBarStyle": "custom",
+    "gitlens.defaultDateFormat": "YYYY-MM-DD HH:mm",
+    "gitlens.defaultDateShortFormat": "YYYY-MM-DD"
 }
