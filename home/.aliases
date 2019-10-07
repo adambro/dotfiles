@@ -18,3 +18,8 @@ alias du='du --block-size=M'
 gitclone() {
   git clone "$1" && cd "$(basename "$1" .git)"
 }
+
+# official way https://github.com/sharkdp/bat#via-docker
+if [ ! -f "/usr/bin/bat" ]; then
+  alias bat='docker run -it --rm -e BAT_THEME -e BAT_STYLE -e BAT_TABS -v "$(pwd):/myapp" danlynn/bat';
+fi
