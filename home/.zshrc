@@ -1,5 +1,5 @@
 # yaourt -S antigen-git
-source /usr/share/zsh/share/antigen.zsh
+source ~/.antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
