@@ -1,7 +1,15 @@
 
 ## Install and configure everything.
-config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin
+config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
 	dconf load /org/gnome/terminal/ < terminal-profile.cfg
+
+## Setup NPM cache without sudo
+## https://docs.npmjs.com/getting-started/fixing-npm-permissions
+~/.npm-global: /usr/bin/npm
+	mkdir ~/.npm-global
+	npm config set prefix '~/.npm-global'
+	# make NPM global packages available in PATH
+	echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.profile
 
 /usr/bin/etckeeper:
 	sudo apt install -y etckeeper git
