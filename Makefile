@@ -44,3 +44,10 @@ config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
 ~/bin: ./home/bin
 	ln -s ~/.dotfiles/home/bin ~/bin
 	cd ~/ && for FILE in ~/.dotfiles/home/.*; do ln -s $$FILE . ; done;
+
+/usr/lib/openarena:
+	sudo apt install openarena
+	# Fix broken 3D engine on Ubuntu 18.04, from https://bugs.launchpad.net/ubuntu/+source/openarena/+bug/1651561/comments/23
+	curl http://mirrors.kernel.org/ubuntu/pool/universe/i/ioquake3/ioquake3_1.36+u20160122+dfsg1-1_amd64.deb > /tmp/ioquake.deb
+	cd /tmp && ar x ioquake.deb data.tar.xz && tar Jxf data.tar.xz ./usr/lib/ioquake3/ioquake3
+	sudo mv /tmp/usr/lib/ioquake3/ioquake3 /usr/lib/ioquake3/ioquake3
