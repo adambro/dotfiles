@@ -1,6 +1,6 @@
 
 ## Install and configure everything.
-config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
+config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global /usr/bin/bat
 	dconf load /org/gnome/terminal/ < terminal-profile.cfg
 
 ## Setup NPM cache without sudo
@@ -51,3 +51,9 @@ config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
 	curl http://mirrors.kernel.org/ubuntu/pool/universe/i/ioquake3/ioquake3_1.36+u20160122+dfsg1-1_amd64.deb > /tmp/ioquake.deb
 	cd /tmp && ar x ioquake.deb data.tar.xz && tar Jxf data.tar.xz ./usr/lib/ioquake3/ioquake3
 	sudo mv /tmp/usr/lib/ioquake3/ioquake3 /usr/lib/ioquake3/ioquake3
+
+/usr/bin/bat:
+	@$(eval VER = 0.15.4)
+	wget --quiet https://github.com/sharkdp/bat/releases/download/v$(VER)/bat_$(VER)_amd64.deb
+	sudo dpkg -i bat_$(VER)_amd64.deb
+	rm bat_$(VER)_amd64.deb
