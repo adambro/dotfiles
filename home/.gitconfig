@@ -12,6 +12,7 @@
 	ci = commit
 	co = checkout
 	br = branch
+	df = diff
 
 	# http://rudygems.com/post/1085402153/git-pp-git-push-git-pull
 	pp = !sh -c 'git pull --rebase && git push'
