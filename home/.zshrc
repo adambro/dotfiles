@@ -8,6 +8,7 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle command-not-found
 antigen bundle z
+antigen bundle kubectl
 
 # BitBucket integration, requires `ruby` installed
 antigen bundle unixorn/bitbucket-git-helpers.plugin.zsh
