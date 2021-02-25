@@ -53,6 +53,10 @@
 
 	# SSS changelog
 	changelog = "!f() { git log --since="${1-1970-01-01}" --format='%b' | egrep 'Added|Changed|Fixed' | tr -d '\\'; }; f"
+
+	# Add everything, commit and immediatly push.
+	ciul = "!f() { git add -A && echo $1 | git commit --file - && git push --quiet; }; f"
+
 [core]
 	editor = vim -c start
 	autocrlf = input
