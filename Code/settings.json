@@ -8,7 +8,6 @@
         "**/bower_components": true
     },
     "editor.trimAutoWhitespace": false,
-    "files.trimTrailingWhitespace": true,
     "files.autoSave": "onWindowChange",
     "terminal.integrated.shell.linux": "/bin/zsh",
     "editor.minimap.enabled": false,
@@ -38,5 +37,60 @@
     "gitlens.views.lineHistory.enabled": true,
     "window.titleBarStyle": "custom",
     "gitlens.defaultDateFormat": "YYYY-MM-DD HH:mm",
-    "gitlens.defaultDateShortFormat": "YYYY-MM-DD"
+    "gitlens.defaultDateShortFormat": "YYYY-MM-DD",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "yaml.schemas": {
+        "file:///home/abrodziak/.vscode/extensions/atlassian.atlascode-2.7.1/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "diffEditor.renderSideBySide": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "git.enableSmartCommit": true,
+    "yaml.customTags": [
+        "!And",
+        "!And sequence",
+        "!If",
+        "!If sequence",
+        "!Not",
+        "!Not sequence",
+        "!Equals",
+        "!Equals sequence",
+        "!Or",
+        "!Or sequence",
+        "!FindInMap",
+        "!FindInMap sequence",
+        "!Base64",
+        "!Join",
+        "!Join sequence",
+        "!Cidr",
+        "!Ref",
+        "!Sub",
+        "!Sub sequence",
+        "!GetAtt",
+        "!GetAZs",
+        "!ImportValue",
+        "!ImportValue sequence",
+        "!Select",
+        "!Select sequence",
+        "!Split",
+        "!Split sequence"
+    ],
+    "yaml.validate": false,
+    "vs-kubernetes": {
+        "vs-kubernetes.minikube-path.linux": "/home/abrodziak/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+    },
+    "window.zoomLevel": 0,
+    "cSpell.userWords": [
+        "Microservices",
+        "cleanup",
+        "kubernetes"
+    ],
+    "cSpell.language": "en-GB,pl",
+    "markdown-preview-enhanced.previewTheme": "solarized-dark.css",
+    "git.confirmSync": false
 }
