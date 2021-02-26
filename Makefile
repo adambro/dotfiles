@@ -1,7 +1,13 @@
 
 ## Install and configure everything.
-config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global /usr/bin/bat
+config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
 	dconf load /org/gnome/terminal/ < terminal-profile.cfg
+
+install: /usr/bin/bat /usr/lib/openarena
+	sudo apt install -y curl vim htop silversearcher-ag
+
+/usr/bin/npm:
+	sudo apt install -y npm
 
 ## Setup NPM cache without sudo
 ## https://docs.npmjs.com/getting-started/fixing-npm-permissions
@@ -12,10 +18,9 @@ config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global /us
 	echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.profile
 
 /usr/bin/etckeeper:
-	sudo apt install -y etckeeper git
+	sudo apt install -y etckeeper git curl
 
 /usr/bin/curl: /usr/bin/etckeeper
-	sudo apt install -y curl vim htop silversearcher-ag
 
 /usr/bin/code: /usr/bin/curl /usr/bin/etckeeper
 	curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /tmp/microsoft.gpg
@@ -23,7 +28,7 @@ config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global /us
 	sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 	# APT update repos & install
 	sudo apt update
-	sudo apt install code
+	sudo apt install -y code
 	# https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
 	sudo sh -c 'echo fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf'
 	sudo etckeeper commit "Allow VS Code (and webpack) to watch many files"
@@ -46,7 +51,7 @@ config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global /us
 	cd ~/ && for FILE in ~/.dotfiles/home/.*; do ln -s $$FILE . ; done;
 
 /usr/lib/openarena:
-	sudo apt install openarena
+	sudo apt install -y openarena
 	# Fix broken 3D engine on Ubuntu 18.04, from https://bugs.launchpad.net/ubuntu/+source/openarena/+bug/1651561/comments/23
 	curl http://mirrors.kernel.org/ubuntu/pool/universe/i/ioquake3/ioquake3_1.36+u20160122+dfsg1-1_amd64.deb > /tmp/ioquake.deb
 	cd /tmp && ar x ioquake.deb data.tar.xz && tar Jxf data.tar.xz ./usr/lib/ioquake3/ioquake3
