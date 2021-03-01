@@ -5,7 +5,8 @@
 	branch = auto
 	grep = auto
 [user]
-	email = adambro@o2.pl
+	# The `email` is set in `~/.config/git/config` file.
+	# email = adambro@o2.pl
 	name = Adam Brodziak
 [alias]
 	st = status
