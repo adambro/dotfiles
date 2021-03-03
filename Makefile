@@ -6,6 +6,12 @@ config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
 # Install CLI tools for development.
 install: /usr/bin/htop /usr/bin/bat /usr/lib/openarena ~/.local/bin/k9s
 
+backup_dotfiles.tgz: ~/.aws ~/.k9s ~/.openarena
+	tar czf $@ $^
+
+backup_etc.tgz:
+	sudo tar czf $@ /etc
+
 /usr/bin/htop:
 	sudo apt install -y curl grep vim jq awscli htop silversearcher-ag
 
