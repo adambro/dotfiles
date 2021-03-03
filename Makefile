@@ -57,7 +57,7 @@ install: /usr/bin/htop /usr/bin/bat /usr/lib/openarena ~/.local/bin/k9s
 /usr/lib/openarena:
 	sudo apt install -y openarena
 	# Fix broken 3D engine on Ubuntu 18.04, from https://bugs.launchpad.net/ubuntu/+source/openarena/+bug/1651561/comments/23
-	curl http://mirrors.kernel.org/ubuntu/pool/universe/i/ioquake3/ioquake3_1.36+u20160122+dfsg1-1_amd64.deb > /tmp/ioquake.deb
+	wget http://mirrors.kernel.org/ubuntu/pool/universe/i/ioquake3/ioquake3_1.36+u20160122+dfsg1-1_amd64.deb -O /tmp/ioquake.deb
 	cd /tmp && ar x ioquake.deb data.tar.xz && tar Jxf data.tar.xz ./usr/lib/ioquake3/ioquake3
 	sudo mv /tmp/usr/lib/ioquake3/ioquake3 /usr/lib/ioquake3/ioquake3
 
