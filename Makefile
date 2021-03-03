@@ -67,8 +67,12 @@ install: /usr/bin/htop /usr/bin/bat /usr/lib/openarena ~/.local/bin/k9s
 	sudo dpkg -i bat_$(VER)_amd64.deb
 	rm bat_$(VER)_amd64.deb
 
-~/.local/bin/k9s:
+~/.local/bin:
+	mkdir -p $@
+
+~/.local/bin/k9s: ~/.local/bin
 	@$(eval VER = 0.24.2)
 	wget --quiet -O /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/download/v$(VER)/k9s_Linux_x86_64.tar.gz
 	tar xzf /tmp/k9s.tar.gz --directory /tmp k9s
 	mv /tmp/k9s $@
+
