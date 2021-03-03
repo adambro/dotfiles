@@ -62,15 +62,13 @@ install: /usr/bin/htop /usr/bin/bat /usr/lib/openarena ~/.local/bin/k9s
 	sudo mv /tmp/usr/lib/ioquake3/ioquake3 /usr/lib/ioquake3/ioquake3
 
 /usr/bin/bat:
-	@$(eval VER = 0.15.4)
+	@$(eval VER = 0.17.1)
 	wget --quiet https://github.com/sharkdp/bat/releases/download/v$(VER)/bat_$(VER)_amd64.deb
 	sudo dpkg -i bat_$(VER)_amd64.deb
 	rm bat_$(VER)_amd64.deb
 
-~/.local/bin:
-	mkdir -p $@
-
-~/.local/bin/k9s: ~/.local/bin
+~/.local/bin/k9s:
+	mkdir -p ~/.local/bin
 	@$(eval VER = 0.24.2)
 	wget --quiet -O /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/download/v$(VER)/k9s_Linux_x86_64.tar.gz
 	tar xzf /tmp/k9s.tar.gz --directory /tmp k9s
