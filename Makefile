@@ -18,7 +18,7 @@ install: /usr/bin/htop /usr/bin/bat /usr/lib/openarena ~/.local/bin/k9s
 	mkdir ~/.npm-global
 	npm config set prefix '~/.npm-global'
 	# make NPM global packages available in PATH
-	echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.profile
+	echo 'export PATH=~/.npm-global/bin:$$PATH' >> ~/.profile
 
 /usr/bin/etckeeper:
 	sudo apt install -y etckeeper git curl
