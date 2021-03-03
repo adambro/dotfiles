@@ -38,6 +38,7 @@ install: /usr/bin/htop /usr/bin/bat /usr/lib/openarena ~/.local/bin/k9s
 
 ## Use shared VS Code configuration
 ~/.config/Code/User/settings.json: /usr/bin/code
+	mkdir -p ~/.config/Code/User
 	ln -s ~/.dotfiles/Code/settings.json ~/.config/Code/User/settings.json
 	ln -s ~/.dotfiles/Code/snippets/ ~/.config/Code/User/snippets
 
