@@ -7,7 +7,7 @@ config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
 install: /usr/bin/htop /usr/bin/bat /usr/lib/openarena ~/.local/bin/k9s
 
 /usr/bin/htop:
-	sudo apt install -y curl grep vim htop silversearcher-ag
+	sudo apt install -y curl grep vim awscli htop silversearcher-ag
 
 /usr/bin/npm:
 	sudo apt install -y npm
