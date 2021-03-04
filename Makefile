@@ -6,7 +6,7 @@ config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
 # Install CLI tools for development.
 install: /usr/bin/jq /usr/bin/bat /usr/lib/openarena ~/.local/bin/k9s
 
-backup_dotfiles.tgz: ~/.aws ~/.k9s ~/.openarena
+backup_dotfiles.tgz: ~/.aws ~/.k9s ~/.kube ~/.local/share/gnome-shell ~/.openarena
 	tar czf $@ $^
 
 backup_etc.tgz:
