@@ -82,6 +82,15 @@ backup_etc.tgz:
 	sudo dpkg -i bat_$(VER)_amd64.deb
 	rm bat_$(VER)_amd64.deb
 
+
+.PHONY: kube
+kube: /usr/local/bin/kubectl ~/.local/bin/k9s /usr/local/bin/docker-compose
+
+/usr/local/bin/kubectl:
+	$(eval VER = $(shell curl -L -s https://dl.k8s.io/release/stable.txt))
+	curl -LO "https://dl.k8s.io/release/$(VER)/bin/linux/amd64/kubectl"
+	sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
 ~/.local/bin/k9s:
 	mkdir -p ~/.local/bin
 	@$(eval VER = 0.24.2)
