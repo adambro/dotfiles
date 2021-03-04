@@ -89,3 +89,7 @@ backup_etc.tgz:
 	tar xzf /tmp/k9s.tar.gz --directory /tmp k9s
 	mv /tmp/k9s $@
 
+/usr/local/bin/docker-compose:
+	@$(eval VER = 1.28.5)
+	sudo curl -L "https://github.com/docker/compose/releases/download/$(VER)/docker-compose-Linux-x86_64" -o /usr/local/bin/docker-compose
+	sudo chmod +x $@
