@@ -51,15 +51,18 @@ cleanup: backup_dotfiles.tgz
 
 /usr/bin/curl: /usr/bin/etckeeper
 
-/usr/bin/code: /usr/bin/curl /usr/bin/etckeeper
+/usr/bin/code: /usr/bin/curl /etc/sysctl.d/88-max_user_watches.conf
 	curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /tmp/microsoft.gpg
 	sudo mv /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 	sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 	# APT update repos & install
 	sudo apt update
 	sudo apt install -y code
+
+/etc/sysctl.d/88-max_user_watches.conf: /usr/bin/etckeeper
 	# https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
-	sudo sh -c 'echo fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf'
+	sudo sh -c 'echo "# https://code.visualstudio.com/docs/setup/linux#_common-questions" > $@'
+	sudo sh -c 'echo fs.inotify.max_user_watches=524288 >> $@'
 	sudo etckeeper commit "Allow VS Code (and webpack) to watch many files"
 
 ## Use shared VS Code configuration
