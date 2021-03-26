@@ -1,3 +1,5 @@
+CREDENTIALS := ~/.aws ~/.ssh ~/.kube ~/.osprey ~/.config/git
+RM := rm -r -i
 
 ## Configure development tools.
 config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
@@ -6,11 +8,20 @@ config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
 # Install CLI tools for development.
 install: /usr/bin/jq /usr/bin/bat /usr/lib/openarena ~/.local/bin/k9s
 
-backup_dotfiles.tgz: ~/.aws ~/.k9s ~/.kube ~/.local/share/gnome-shell ~/.openarena
+.PHONY: backup
+backup: backup_dotfiles.tgz backup_etc.tgz
+
+backup_dotfiles.tgz: $(CREDENTIALS) ~/.z ~/.zsh_history ~/.notable.json ~/.k9s ~/.local/share/gnome-shell ~/.openarena
 	tar czf $@ $^
 
 backup_etc.tgz:
 	sudo tar czf $@ /etc
+
+cleanup: backup_dotfiles.tgz
+	# Browsers are synced via cloud
+	$(RM) ~/.mozilla ~/.config/google-chrome
+	dropbox stop && $(RM) ~/Dropbox
+	$(RM) $(CREDENTIALS)
 
 /usr/bin/jq:
 	sudo apt install -y curl grep vim jq awscli silversearcher-ag
