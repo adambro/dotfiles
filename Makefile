@@ -107,7 +107,7 @@ kube: /usr/local/bin/kubectl ~/.local/bin/k9s /usr/local/bin/docker-compose
 
 ~/.local/bin/k9s:
 	mkdir -p ~/.local/bin
-	@$(eval VER = 0.24.2)
+	@$(eval VER = 0.24.6)
 	wget --quiet -O /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/download/v$(VER)/k9s_Linux_x86_64.tar.gz
 	tar xzf /tmp/k9s.tar.gz --directory /tmp k9s
 	mv /tmp/k9s $@
