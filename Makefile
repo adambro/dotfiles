@@ -2,11 +2,11 @@ CREDENTIALS := ~/.aws ~/.ssh ~/.kube ~/.osprey ~/.config/git
 RM := rm -r -i
 
 ## Configure development tools.
-config: ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
+config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
 	dconf load /org/gnome/terminal/ < terminal-profile.cfg
 
 # Install CLI tools for development.
-install: /usr/bin/jq /usr/bin/bat /usr/lib/openarena ~/.local/bin/k9s
+install: /usr/bin/etckeeper /usr/bin/jq /snap/bpytop
 
 .PHONY: backup
 backup: backup_dotfiles.tgz backup_etc.tgz
@@ -27,7 +27,8 @@ cleanup: backup_dotfiles.tgz
 	sudo apt install -y curl grep vim jq awscli silversearcher-ag
 
 /snap/bpytop:
-	sudo snap install bpytop
+	sudo snap install bpytop foliate spotify teams
+	sudo snap install slack --classic
 	sudo snap connect bpytop:mount-observe
 	sudo snap connect bpytop:network-control
 	sudo snap connect bpytop:hardware-observe
@@ -98,7 +99,7 @@ cleanup: backup_dotfiles.tgz
 
 
 .PHONY: kube
-kube: /usr/local/bin/kubectl ~/.local/bin/k9s /usr/local/bin/docker-compose
+kube: /usr/local/bin/kubectl ~/.local/bin/k9s
 
 /usr/local/bin/kubectl:
 	$(eval VER = $(shell curl -L -s https://dl.k8s.io/release/stable.txt))
