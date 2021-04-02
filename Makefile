@@ -109,8 +109,8 @@ kube: ~/.local/bin/kubectl ~/.local/bin/k9s
 
 ~/.local/bin/k9s:
 	mkdir -p ~/.local/bin
-	@$(eval VER = 0.24.7)
-	wget --quiet -O /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/download/v$(VER)/k9s_Linux_x86_64.tar.gz
+	$(eval VER = $(shell curl -L -s https://raw.githubusercontent.com/derailed/k9s/master/Makefile | grep -Po "v(\d+\.)+\d+"))
+	curl -L -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/download/$(VER)/k9s_Linux_x86_64.tar.gz
 	tar xzf /tmp/k9s.tar.gz --directory /tmp k9s
 	mv /tmp/k9s $@
 
