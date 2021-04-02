@@ -99,12 +99,13 @@ cleanup: backup_dotfiles.tgz
 
 
 .PHONY: kube
-kube: /usr/local/bin/kubectl ~/.local/bin/k9s
+kube: ~/.local/bin/kubectl ~/.local/bin/k9s
 
-/usr/local/bin/kubectl:
+~/.local/bin/kubectl:
+	mkdir -p ~/.local/bin
 	$(eval VER = $(shell curl -L -s https://dl.k8s.io/release/stable.txt))
-	curl -LO "https://dl.k8s.io/release/$(VER)/bin/linux/amd64/kubectl"
-	sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+	curl -L "https://dl.k8s.io/release/$(VER)/bin/linux/amd64/kubectl" -o $@
+	chmod +x $@
 
 ~/.local/bin/k9s:
 	mkdir -p ~/.local/bin
