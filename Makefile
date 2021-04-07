@@ -36,12 +36,12 @@ cleanup: backup_dotfiles.tgz
 	sudo snap connect bpytop:process-control
 	sudo snap connect bpytop:physical-memory-observe
 
-/usr/bin/npm:
-	sudo apt install -y npm
+/snap/bin/npm:
+	sudo snap install node --classic
 
 ## Setup NPM cache without sudo
 ## https://docs.npmjs.com/getting-started/fixing-npm-permissions
-~/.npm-global: /usr/bin/npm
+~/.npm-global: /snap/bin/npm
 	mkdir ~/.npm-global
 	npm config set prefix '~/.npm-global'
 	# make NPM global packages available in PATH
