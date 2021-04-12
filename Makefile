@@ -65,7 +65,7 @@ backup_etc.tgz:
 
 /usr/bin/curl: /usr/bin/etckeeper
 
-/usr/bin/code: /usr/bin/curl
+/etc/sysctl.d/88-max_user_watches.conf: /usr/bin/curl
 	curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /tmp/microsoft.gpg
 	sudo mv /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 	sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
@@ -78,7 +78,7 @@ backup_etc.tgz:
 	sudo etckeeper commit "Allow VS Code (and webpack) to watch many files"
 
 ## Use shared VS Code configuration
-~/.config/Code/User: /usr/bin/code
+~/.config/Code/User: /etc/sysctl.d/88-max_user_watches.conf
 	mkdir -p $@ && touch -m $@
 	ln -s ~/.dotfiles/Code/settings.json ~/.config/Code/User/settings.json
 	ln -s ~/.dotfiles/Code/snippets/ ~/.config/Code/User/snippets
