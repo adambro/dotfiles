@@ -6,7 +6,7 @@ help: ## Display targets with comments.
 
 all: config install kube apps ## Do all is needed for new laptop.
 
-config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global ## Config system and tools.
+config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User ~/bin ~/.npm-global ## Config system and tools.
 	dconf load /org/gnome/terminal/ < terminal-profile.cfg
 
 install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat ## Install CLI tools.
@@ -78,8 +78,8 @@ backup_etc.tgz:
 	sudo etckeeper commit "Allow VS Code (and webpack) to watch many files"
 
 ## Use shared VS Code configuration
-~/.config/Code/User/settings.json: /usr/bin/code
-	mkdir -p ~/.config/Code/User
+~/.config/Code/User: /usr/bin/code
+	mkdir -p $@ && touch -m $@
 	ln -s ~/.dotfiles/Code/settings.json ~/.config/Code/User/settings.json
 	ln -s ~/.dotfiles/Code/snippets/ ~/.config/Code/User/snippets
 
