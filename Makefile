@@ -6,7 +6,7 @@ config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bi
 	dconf load /org/gnome/terminal/ < terminal-profile.cfg
 
 # Install CLI tools for development.
-install: /usr/bin/etckeeper /usr/bin/jq /snap/bpytop /usr/bin/epiphany-browser
+install: /usr/bin/etckeeper /usr/bin/jq /snap/bpytop /usr/bin/epiphany-browser /usr/bin/bat
 
 .PHONY: backup
 backup: backup_dotfiles.tgz backup_etc.tgz
@@ -94,10 +94,9 @@ cleanup: backup_dotfiles.tgz
 	sudo mv /tmp/usr/lib/ioquake3/ioquake3 /usr/lib/ioquake3/ioquake3
 
 /usr/bin/bat:
-	@$(eval VER = 0.17.1)
-	wget --quiet https://github.com/sharkdp/bat/releases/download/v$(VER)/bat_$(VER)_amd64.deb
-	sudo dpkg -i bat_$(VER)_amd64.deb
-	rm bat_$(VER)_amd64.deb
+	$(eval VER = $(shell curl -L -s https://raw.githubusercontent.com/sharkdp/bat/master/Cargo.toml | grep version -m 1 | grep -Po "(\d+\.)+\d+"))
+	curl -L -o /tmp/bat.deb https://github.com/sharkdp/bat/releases/download/v$(VER)/bat_$(VER)_amd64.deb
+	sudo dpkg -i /tmp/bat.deb
 
 
 .PHONY: kube
