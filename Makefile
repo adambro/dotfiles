@@ -6,12 +6,12 @@ config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bi
 	dconf load /org/gnome/terminal/ < terminal-profile.cfg
 
 # Install CLI tools for development.
-install: /usr/bin/etckeeper /usr/bin/jq /snap/bpytop
+install: /usr/bin/etckeeper /usr/bin/jq /snap/bpytop /usr/bin/epiphany-browser
 
 .PHONY: backup
 backup: backup_dotfiles.tgz backup_etc.tgz
 
-backup_dotfiles.tgz: $(CREDENTIALS) ~/.z ~/.zsh_history ~/.notable.json ~/.k9s ~/.local/share/gnome-shell ~/.openarena
+backup_dotfiles.tgz: $(CREDENTIALS) ~/.z ~/.zsh_history ~/.notable.json ~/.k9s ~/.local/share/gnome-shell ~/.openarena ~/.local/share/epiphany*
 	tar czf $@ $^
 
 backup_etc.tgz:
@@ -25,6 +25,10 @@ cleanup: backup_dotfiles.tgz
 
 /usr/bin/jq:
 	sudo apt install -y curl grep vim jq awscli silversearcher-ag
+
+# Install Web browser with plugins for videos.
+/usr/bin/epiphany-browser:
+	sudo apt install epiphany-browser gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad
 
 /snap/bpytop:
 	sudo snap install bpytop foliate spotify teams
