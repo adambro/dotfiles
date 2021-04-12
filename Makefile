@@ -1,27 +1,36 @@
 CREDENTIALS := ~/.aws ~/.ssh ~/.kube ~/.osprey ~/.config/git
-RM := rm -r -i
+RM := rm -r -i # Change -i to -y when really need to wipe data.
 
-## Configure development tools.
-config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global
+help: ## Display targets with comments.
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z._-]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+
+all: config install kube apps ## Do all is needed for new laptop.
+
+config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User/settings.json ~/bin ~/.npm-global ## Config system and tools.
 	dconf load /org/gnome/terminal/ < terminal-profile.cfg
 
-# Install CLI tools for development.
-install: /usr/bin/etckeeper /usr/bin/jq /snap/bpytop /usr/bin/epiphany-browser /usr/bin/bat
+install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat ## Install CLI tools.
 
-.PHONY: backup
-backup: backup_dotfiles.tgz backup_etc.tgz
+apps: /snap/bpytop /usr/bin/epiphany-browser ## Install GUI apps.
+
+kube: ~/.local/bin/kubectl ~/.local/bin/k9s ## Install Kubernetes CLI tools.
+
+cleanup: backup_dotfiles.tgz ## Remove sensitive data in dotfiles.
+	# Browsers synced via cloud, no need for local backup.
+	$(RM) ~/.mozilla ~/.config/google-chrome
+	dropbox stop && $(RM) ~/Dropbox
+	$(RM) $(CREDENTIALS)
+
+backup: backup_dotfiles.tgz backup_etc.tgz ## Backup of (some) dotfiles and /etc dir.
+
+.PHONY: help all config install apps kube cleanup backup
+
 
 backup_dotfiles.tgz: $(CREDENTIALS) ~/.z ~/.zsh_history ~/.notable.json ~/.k9s ~/.local/share/gnome-shell ~/.openarena ~/.local/share/epiphany*
 	tar czf $@ $^
 
 backup_etc.tgz:
 	sudo tar czf $@ /etc
-
-cleanup: backup_dotfiles.tgz
-	# Browsers are synced via cloud
-	$(RM) ~/.mozilla ~/.config/google-chrome
-	dropbox stop && $(RM) ~/Dropbox
-	$(RM) $(CREDENTIALS)
 
 /usr/bin/jq:
 	sudo apt install -y curl grep vim jq awscli silversearcher-ag
@@ -98,9 +107,6 @@ cleanup: backup_dotfiles.tgz
 	curl -L -o /tmp/bat.deb https://github.com/sharkdp/bat/releases/download/v$(VER)/bat_$(VER)_amd64.deb
 	sudo dpkg -i /tmp/bat.deb
 
-
-.PHONY: kube
-kube: ~/.local/bin/kubectl ~/.local/bin/k9s
 
 ~/.local/bin/kubectl:
 	mkdir -p ~/.local/bin
