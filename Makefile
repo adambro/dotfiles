@@ -11,7 +11,7 @@ config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User ~/bin ~/.npm-globa
 
 install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat ## Install CLI tools.
 
-apps: /snap/bpytop /usr/bin/epiphany-browser ## Install GUI apps.
+apps: /usr/bin/dropbox /snap/bpytop /usr/bin/epiphany-browser ## Install GUI apps.
 
 kube: ~/.local/bin/kubectl ~/.local/bin/k9s ## Install Kubernetes CLI tools.
 
@@ -38,6 +38,13 @@ backup_etc.tgz:
 # Install Web browser with plugins for videos.
 /usr/bin/epiphany-browser:
 	sudo apt install epiphany-browser gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad
+
+/usr/bin/dropbox:
+	sudo sh -c 'echo "deb [arch=i386,amd64] http://linux.dropbox.com/ubuntu disco main" > /etc/apt/sources.list.d/dropbox.list'
+	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
+	# APT update repos & install
+	sudo apt update
+	sudo apt install -y dropbox
 
 /snap/bpytop:
 	sudo snap install bpytop foliate spotify teams
