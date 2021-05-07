@@ -93,7 +93,7 @@ backup_etc.tgz:
 ## ZSH as default shell + Antigen + plugin dependencies
 /bin/zsh:
 	sudo apt install -y zsh wmctrl xdotool
-	sudo chsh -s /bin/zsh
+	chsh -s /bin/zsh
 
 ~/.antigen.zsh: /bin/zsh
 	curl -L git.io/antigen > ~/.antigen.zsh
