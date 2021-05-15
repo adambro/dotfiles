@@ -29,4 +29,3 @@ antigen apply
 
 source ~/.aliases
 source ~/.profile
-
