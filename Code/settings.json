@@ -92,5 +92,6 @@
     ],
     "cSpell.language": "en-GB,pl",
     "markdown-preview-enhanced.previewTheme": "solarized-dark.css",
-    "git.confirmSync": false
+    "git.confirmSync": false,
+    "redhat.telemetry.enabled": false
 }
