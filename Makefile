@@ -13,7 +13,7 @@ install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat ## Install CLI tools.
 
 apps: /usr/bin/dropbox /snap/bpytop /usr/bin/epiphany-browser ## Install GUI apps.
 
-kube: ~/.local/bin/kubectl ~/.local/bin/k9s ## Install Kubernetes CLI tools.
+kube: ~/.local/bin/kubectl ~/.local/bin/k9s ~/.local/bin/helm ## Install Kubernetes CLI tools.
 
 cleanup: backup_dotfiles.tgz ## Remove sensitive data in dotfiles.
 	# Browsers synced via cloud, no need for local backup.
@@ -128,6 +128,13 @@ backup_etc.tgz:
 	curl -L -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/download/$(VER)/k9s_Linux_x86_64.tar.gz
 	tar xzf /tmp/k9s.tar.gz --directory /tmp k9s
 	mv /tmp/k9s $@
+
+~/.local/bin/helm:
+	mkdir -p ~/.local/bin
+	@$(eval VER = v3.6.2)
+	curl -L -o /tmp/helm.tar.gz https://get.helm.sh/helm-$(VER)-linux-amd64.tar.gz
+	tar xzf /tmp/helm.tar.gz --directory /tmp linux-amd64/helm
+	mv /tmp/linux-amd64/helm $@
 
 /usr/local/bin/docker-compose: /usr/bin/curl
 	@$(eval VER = 1.28.5)
