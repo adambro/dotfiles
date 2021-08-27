@@ -93,5 +93,12 @@
     "cSpell.language": "en-GB,pl",
     "markdown-preview-enhanced.previewTheme": "solarized-dark.css",
     "git.confirmSync": false,
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    }
 }
