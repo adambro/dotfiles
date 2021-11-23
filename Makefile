@@ -70,10 +70,14 @@ backup_etc.tgz:
 /usr/bin/etckeeper:
 	sudo apt install -y etckeeper git curl
 
+# To be used as dependency for other targets.
+.PHONY: curl
+curl: /usr/bin/curl
+
 /usr/bin/curl:
 	sudo apt install -y curl
 
-/etc/sysctl.d/88-max_user_watches.conf: /usr/bin/curl
+/etc/sysctl.d/88-max_user_watches.conf: curl
 	curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /tmp/microsoft.gpg
 	sudo mv /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 	sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
@@ -96,7 +100,7 @@ backup_etc.tgz:
 	sudo apt install -y zsh wmctrl xdotool
 	chsh -s /bin/zsh
 
-~/.antigen.zsh: /bin/zsh
+~/.antigen.zsh: /bin/zsh curl
 	curl -L git.io/antigen > ~/.antigen.zsh
 
 ~/bin: ./home/bin
@@ -110,33 +114,33 @@ backup_etc.tgz:
 	cd /tmp && ar x ioquake.deb data.tar.xz && tar Jxf data.tar.xz ./usr/lib/ioquake3/ioquake3
 	sudo mv /tmp/usr/lib/ioquake3/ioquake3 /usr/lib/ioquake3/ioquake3
 
-/usr/bin/bat: /usr/bin/curl
+/usr/bin/bat: curl
 	$(eval VER = $(shell curl -L -s https://raw.githubusercontent.com/sharkdp/bat/master/Cargo.toml | grep version -m 1 | grep -Po "(\d+\.)+\d+"))
 	curl -L -o /tmp/bat.deb https://github.com/sharkdp/bat/releases/download/v$(VER)/bat_$(VER)_amd64.deb
 	sudo dpkg -i /tmp/bat.deb
 
 
-~/.local/bin/kubectl: /usr/bin/curl
+~/.local/bin/kubectl: curl
 	mkdir -p ~/.local/bin
 	$(eval VER = $(shell curl -L -s https://dl.k8s.io/release/stable.txt))
 	curl -L "https://dl.k8s.io/release/$(VER)/bin/linux/amd64/kubectl" -o $@
 	chmod +x $@
 
-~/.local/bin/k9s: /usr/bin/curl
+~/.local/bin/k9s: curl
 	mkdir -p ~/.local/bin
 	$(eval VER = $(shell curl -L -s https://raw.githubusercontent.com/derailed/k9s/master/Makefile | grep -Po "v(\d+\.)+\d+"))
 	curl -L -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/download/$(VER)/k9s_Linux_x86_64.tar.gz
 	tar xzf /tmp/k9s.tar.gz --directory /tmp k9s
 	mv /tmp/k9s $@
 
-~/.local/bin/helm:
+~/.local/bin/helm: curl
 	mkdir -p ~/.local/bin
 	@$(eval VER = v3.6.2)
 	curl -L -o /tmp/helm.tar.gz https://get.helm.sh/helm-$(VER)-linux-amd64.tar.gz
 	tar xzf /tmp/helm.tar.gz --directory /tmp linux-amd64/helm
 	mv /tmp/linux-amd64/helm $@
 
-/usr/local/bin/docker-compose: /usr/bin/curl
+/usr/local/bin/docker-compose: curl
 	@$(eval VER = 1.28.5)
 	sudo curl -L "https://github.com/docker/compose/releases/download/$(VER)/docker-compose-Linux-x86_64" -o /usr/local/bin/docker-compose
 	sudo chmod +x $@
