@@ -8,6 +8,7 @@ alias g=git
 alias trash="gio trash"
 alias htop=bpytop
 alias top=bpytop
+alias o=xdg-open
 
 # making GNU commands more user-friendly, not Unix-friendly
 # http://t-a-w.blogspot.com/2010/03/small-tips-for-making-unix-programming.html
