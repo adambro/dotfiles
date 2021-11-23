@@ -91,9 +91,10 @@ curl: /usr/bin/curl
 
 ## Use shared VS Code configuration
 ~/.config/Code/User: /etc/sysctl.d/88-max_user_watches.conf
-	mkdir -p $@ && touch -m $@
+	mkdir -p $@
 	ln -s ~/.dotfiles/Code/settings.json ~/.config/Code/User/settings.json
 	ln -s ~/.dotfiles/Code/snippets/ ~/.config/Code/User/snippets
+	touch -m $@
 
 ## ZSH as default shell + Antigen + plugin dependencies
 /bin/zsh:
