@@ -11,7 +11,7 @@ config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User ~/bin ~/.npm-globa
 
 install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat ## Install CLI tools.
 
-apps: /usr/bin/dropbox /snap/bpytop /usr/bin/epiphany-browser ## Install GUI apps.
+apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser ## Install GUI apps.
 
 kube: ~/.local/bin/kubectl ~/.local/bin/k9s ~/.local/bin/helm ## Install Kubernetes CLI tools.
 
@@ -46,15 +46,15 @@ backup_etc.tgz:
 	sudo apt update
 	sudo apt install -y dropbox
 
-/snap/bpytop:
-	sudo snap install bpytop foliate spotify teams
+/snap/btop:
 	sudo snap install slack --classic
-	sudo snap connect bpytop:mount-observe
-	sudo snap connect bpytop:network-control
-	sudo snap connect bpytop:hardware-observe
-	sudo snap connect bpytop:system-observe
-	sudo snap connect bpytop:process-control
-	sudo snap connect bpytop:physical-memory-observe
+	sudo snap install btop foliate spotify teams
+	sudo snap connect btop:mount-observe
+	sudo snap connect btop:network-observe
+	sudo snap connect btop:hardware-observe
+	sudo snap connect btop:system-observe
+	sudo snap connect btop:process-control
+	sudo snap connect btop:physical-memory-observe
 
 /snap/bin/npm:
 	sudo snap install node --classic

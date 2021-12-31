@@ -6,8 +6,8 @@ alias fig=docker-compose
 alias k=kubectl
 alias g=git
 alias trash="gio trash"
-alias htop=bpytop
-alias top=bpytop
+alias htop=btop
+alias top=btop
 alias o=xdg-open
 
 # https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions
