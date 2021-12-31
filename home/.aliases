@@ -10,6 +10,12 @@ alias htop=bpytop
 alias top=bpytop
 alias o=xdg-open
 
+# https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions
+alias ls="ls -CF"
+alias mkdir="mkdir -pv"
+alias wget="wget -c"
+alias histg="history | grep"
+
 # making GNU commands more user-friendly, not Unix-friendly
 # http://t-a-w.blogspot.com/2010/03/small-tips-for-making-unix-programming.html
 alias rm='rm -i'
