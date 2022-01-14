@@ -117,27 +117,27 @@ curl: /usr/bin/curl
 
 /usr/bin/bat: curl
 	$(eval VER = $(shell curl -L -s https://raw.githubusercontent.com/sharkdp/bat/master/Cargo.toml | grep version -m 1 | grep -Po "(\d+\.)+\d+"))
-	curl -L -o /tmp/bat.deb https://github.com/sharkdp/bat/releases/download/v$(VER)/bat_$(VER)_amd64.deb
+	curl -sL -o /tmp/bat.deb https://github.com/sharkdp/bat/releases/download/v$(VER)/bat_$(VER)_amd64.deb
 	sudo dpkg -i /tmp/bat.deb
 
 
 ~/.local/bin/kubectl: curl
 	mkdir -p ~/.local/bin
 	$(eval VER = $(shell curl -L -s https://dl.k8s.io/release/stable.txt))
-	curl -L "https://dl.k8s.io/release/$(VER)/bin/linux/amd64/kubectl" -o $@
+	curl -sL "https://dl.k8s.io/release/$(VER)/bin/linux/amd64/kubectl" -o $@
 	chmod +x $@
 
 ~/.local/bin/k9s: curl
 	mkdir -p ~/.local/bin
 	$(eval VER = $(shell curl -L -s https://raw.githubusercontent.com/derailed/k9s/master/Makefile | grep -Po "v(\d+\.)+\d+"))
-	curl -L -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/download/$(VER)/k9s_Linux_x86_64.tar.gz
+	curl -sL -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/download/$(VER)/k9s_Linux_x86_64.tar.gz
 	tar xzf /tmp/k9s.tar.gz --directory /tmp k9s
 	mv /tmp/k9s $@
 
 ~/.local/bin/helm: curl
 	mkdir -p ~/.local/bin
 	@$(eval VER = v3.6.2)
-	curl -L -o /tmp/helm.tar.gz https://get.helm.sh/helm-$(VER)-linux-amd64.tar.gz
+	curl -sL -o /tmp/helm.tar.gz https://get.helm.sh/helm-$(VER)-linux-amd64.tar.gz
 	tar xzf /tmp/helm.tar.gz --directory /tmp linux-amd64/helm
 	mv /tmp/linux-amd64/helm $@
 
