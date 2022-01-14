@@ -13,7 +13,7 @@ install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat ## Install CLI tools.
 
 apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser ## Install GUI apps.
 
-kube: ~/.local/bin/kubectl ~/.local/bin/k9s ~/.local/bin/helm ## Install Kubernetes CLI tools.
+kube: /usr/bin/curl ~/.local/bin/kubectl ~/.krew ~/.local/bin/k9s ~/.local/bin/helm ## Install Kubernetes CLI tools.
 
 cleanup: backup_dotfiles.tgz ## Remove sensitive data in dotfiles.
 	# Browsers synced via cloud, no need for local backup.
@@ -126,6 +126,12 @@ curl: /usr/bin/curl
 	$(eval VER = $(shell curl -L -s https://dl.k8s.io/release/stable.txt))
 	curl -sL "https://dl.k8s.io/release/$(VER)/bin/linux/amd64/kubectl" -o $@
 	chmod +x $@
+
+~/.krew:
+	curl -o /tmp/krew.tar.gz -fsSL "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-linux_amd64.tar.gz"
+	tar xzvf /tmp/krew.tar.gz
+	./krew-linux_amd64 install krew
+	echo 'export PATH=~"$${PATH}:$${HOME}/.krew/bin"' >> ~/.profile
 
 ~/.local/bin/k9s: curl
 	mkdir -p ~/.local/bin
