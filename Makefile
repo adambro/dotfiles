@@ -13,7 +13,7 @@ install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat ## Install CLI tools.
 
 apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser ## Install GUI apps.
 
-kube: /usr/bin/curl ~/.local/bin/kubectl ~/.krew ~/.local/bin/k9s ~/.local/bin/helm ## Install Kubernetes CLI tools.
+kube: /usr/bin/curl ~/.local/bin/kubectl ~/.krew ~/.local/bin/kubecolor ~/.local/bin/k9s ~/.local/bin/helm ## Install Kubernetes CLI tools.
 
 cleanup: backup_dotfiles.tgz ## Remove sensitive data in dotfiles.
 	# Browsers synced via cloud, no need for local backup.
@@ -132,6 +132,13 @@ curl: /usr/bin/curl
 	tar xzvf /tmp/krew.tar.gz
 	./krew-linux_amd64 install krew
 	echo 'export PATH=~"$${PATH}:$${HOME}/.krew/bin"' >> ~/.profile
+
+~/.local/bin/kubecolor:
+	mkdir -p ~/.local/bin
+	@$(eval VER = 0.0.20)
+	curl -sL -o /tmp/kubecolor.tar.gz https://github.com/hidetatz/kubecolor/releases/download/v$(VER)/kubecolor_$(VER)_Linux_x86_64.tar.gz
+	tar xzf /tmp/kubecolor.tar.gz --directory /tmp kubecolor
+	mv /tmp/kubecolor $@
 
 ~/.local/bin/k9s: curl
 	mkdir -p ~/.local/bin
