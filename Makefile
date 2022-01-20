@@ -11,7 +11,7 @@ config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User ~/bin ~/.npm-globa
 
 install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat ## Install CLI tools.
 
-apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser ## Install GUI apps.
+apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser ~/opt/Obsidian ## Install GUI apps.
 
 kube: /usr/bin/curl ~/.local/bin/kubectl ~/.krew ~/.local/bin/kubecolor ~/.local/bin/k9s ~/.local/bin/helm ## Install Kubernetes CLI tools.
 
@@ -55,6 +55,14 @@ backup_etc.tgz:
 	sudo snap connect btop:system-observe
 	sudo snap connect btop:process-control
 	sudo snap connect btop:physical-memory-observe
+
+~/opt/Obsidian:
+	mkdir -p ~/opt
+	@$(eval VER = 0.13.19)
+	curl -sL -o $@ https://github.com/obsidianmd/obsidian-releases/releases/download/v$(VER)/Obsidian-$(VER).AppImage
+	chmod +x $@
+	envsubst < obsidian.desktop > $@
+	curl -sL -o ~/.local/share/icons/hicolor/128x128/apps/obsidian.png https://cdn.discordapp.com/icons/686053708261228577/1361e62fed2fee55c7885103c864e2a8.png
 
 /snap/bin/npm:
 	sudo snap install node --classic

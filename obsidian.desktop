@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Obsidian
+Comment=Markdown Notetaking App
+GenericName=Text Editor
+Type=Application
+Exec=$HOME/opt/Obsidian %U
+Icon=obsidian.png 
+StartupWMClass=obsidian
+MimeType=x-scheme-handler/obsidian;
