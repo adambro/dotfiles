@@ -29,3 +29,4 @@ antigen apply
 
 source ~/.aliases
 source ~/.profile
+source ~/bin/awsp.bash
