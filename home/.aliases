@@ -24,6 +24,9 @@ alias cp='cp -i'
 alias df='df -h'
 alias du='du --block-size=M'
 
+# Easy copy&paste stuff from net https://twitter.com/swyx/status/1490721847935062021
+alias '$'=''
+
 # https://unix.stackexchange.com/a/97922
 gitclone() {
   git clone "$1" && cd "$(basename "$1" .git)"
