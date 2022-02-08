@@ -26,7 +26,7 @@ backup: backup_dotfiles.tgz backup_etc.tgz ## Backup of (some) dotfiles and /etc
 .PHONY: help all config install apps kube cleanup backup
 
 
-backup_dotfiles.tgz: $(CREDENTIALS) ~/.z ~/.zsh_history ~/.notable.json ~/.k9s ~/.local/share/gnome-shell ~/.openarena ~/.local/share/epiphany*
+backup_dotfiles.tgz: $(CREDENTIALS) ~/.z ~/.zsh_history ~/.notable.json ~/.k9s ~/.local/share/gnome-shell ~/.openarena ~/.local/share/epiphany* ~/.netrc
 	tar czf $@ $^
 
 backup_etc.tgz:
