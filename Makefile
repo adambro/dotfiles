@@ -64,13 +64,14 @@ backup_etc.tgz:
 	envsubst < obsidian.desktop > $@
 	curl -sL -o ~/.local/share/icons/hicolor/128x128/apps/obsidian.png https://cdn.discordapp.com/icons/686053708261228577/1361e62fed2fee55c7885103c864e2a8.png
 
-/snap/bin/npm:
-	sudo snap install node --classic
+/usr/bin/npm:
+	curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+	sudo apt install -y nodejs
 
 ## Setup NPM cache without sudo
 ## https://docs.npmjs.com/getting-started/fixing-npm-permissions
-~/.npm-global: /snap/bin/npm
-	mkdir ~/.npm-global
+~/.npm-global: /usr/bin/npm
+	mkdir -p ~/.npm-global
 	npm config set prefix '~/.npm-global'
 	# make NPM global packages available in PATH
 	echo 'export PATH=~/.npm-global/bin:$$PATH' >> ~/.profile
