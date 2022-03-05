@@ -102,8 +102,10 @@
         "jupyter-notebook": "left"
     },
     "[typescript]": {
+        "editor.tabSize": 2,
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "json.schemas": [],
-    "aws.profile": "profile:cup-academic-services"
+    "aws.profile": "profile:cup-academic-services",
+    "typescript.updateImportsOnFileMove.enabled": "always"
 }
