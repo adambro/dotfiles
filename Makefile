@@ -11,7 +11,7 @@ config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User ~/bin ~/.npm-globa
 
 install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat ## Install CLI tools.
 
-apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser ~/opt/Obsidian ## Install GUI apps.
+apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser ~/opt/Obsidian ~/.local/bin/dasel ## Install GUI apps.
 
 kube: /usr/bin/curl ~/.local/bin/kubectl ~/.krew ~/.local/bin/kubecolor ~/.local/bin/k9s ~/.local/bin/helm ## Install Kubernetes CLI tools.
 
@@ -129,6 +129,12 @@ curl: /usr/bin/curl
 	curl -sL -o /tmp/bat.deb https://github.com/sharkdp/bat/releases/download/v$(VER)/bat_$(VER)_amd64.deb
 	sudo dpkg -i /tmp/bat.deb
 
+
+~/.local/bin/dasel: curl
+	mkdir -p ~/.local/bin
+	$(eval URL = $(shell curl -sSLf https://api.github.com/repos/tomwright/dasel/releases/latest | grep browser_download_url | grep linux_amd64 | cut -d\" -f 4))
+	curl -sL "$(URL)" -o $@
+	chmod +x $@
 
 ~/.local/bin/kubectl: curl
 	mkdir -p ~/.local/bin
