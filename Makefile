@@ -169,7 +169,8 @@ curl: /usr/bin/curl
 	tar xzf /tmp/helm.tar.gz --directory /tmp linux-amd64/helm
 	mv /tmp/linux-amd64/helm $@
 
-/usr/local/bin/docker-compose: curl
-	@$(eval VER = 1.28.5)
-	sudo curl -L "https://github.com/docker/compose/releases/download/$(VER)/docker-compose-Linux-x86_64" -o /usr/local/bin/docker-compose
+~/.local/bin/docker-compose: curl
+	@$(eval VER = 1.29.2)
+	curl -sL -o $@ "https://github.com/docker/compose/releases/download/$(VER)/docker-compose-Linux-x86_64"
 	sudo chmod +x $@
+
