@@ -58,6 +58,9 @@
 	# Add everything, commit and immediatly push.
 	ciul = "!f() { git add -A && echo $1 | git commit --file - && git push --quiet; }; f"
 
+	# Set upstream branch of the same name
+	set-upstream = "!f() { git branch --set-upstream-to=${1-origin}/$(git branch --show-current) $(git branch --show-current); }; f"
+
 [core]
 	editor = vim -c start
 	autocrlf = input
