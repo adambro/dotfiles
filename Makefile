@@ -11,7 +11,7 @@ config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User ~/bin ~/.npm-globa
 
 install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat ## Install CLI tools.
 
-apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser ~/opt/Obsidian ~/.local/bin/dasel ## Install GUI apps.
+apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser ~/opt/Obsidian ~/.local/bin/dasel /usr/bin/espanso ## Install GUI apps.
 
 kube: /usr/bin/curl ~/.local/bin/kubectl ~/.krew ~/.local/bin/kubecolor ~/.local/bin/k9s ~/.local/bin/helm ## Install Kubernetes CLI tools.
 
@@ -63,6 +63,16 @@ backup_etc.tgz:
 	chmod +x $@
 	envsubst < obsidian.desktop > $@
 	curl -sL -o ~/.local/share/icons/hicolor/128x128/apps/obsidian.png https://cdn.discordapp.com/icons/686053708261228577/1361e62fed2fee55c7885103c864e2a8.png
+
+/usr/bin/espanso:
+	$(eval URL = $(shell curl -sSLf https://api.github.com/repos/espanso/espanso/releases/latest | jq -r .name))
+	curl -sL -o /tmp/espanso-debian-wayland-amd64.deb https://github.com/federico-terzi/espanso/releases/download/$(VER)/espanso-debian-wayland-amd64.deb
+	sudo apt install -y /tmp/espanso-debian-wayland-amd64.deb
+	sudo setcap "cap_dac_override+p" $$(which espanso)
+	# Register espanso as a systemd service (required only once)
+	espanso service register
+	# Start in SystemD managed mode
+	espanso start
 
 /usr/bin/npm:
 	curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
