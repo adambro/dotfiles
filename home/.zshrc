@@ -9,6 +9,7 @@ antigen bundle git
 antigen bundle command-not-found
 antigen bundle z
 antigen bundle kubectl
+antigen bundle asdf
 
 # Load the theme.
 antigen bundle mafredri/zsh-async
