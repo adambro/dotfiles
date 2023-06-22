@@ -84,7 +84,6 @@
     "vs-kubernetes": {
         "vs-kubernetes.minikube-path.linux": "/home/abrodziak/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
     },
-    "window.zoomLevel": 0,
     "cSpell.userWords": [
         "Microservices",
         "cleanup",
@@ -106,6 +105,13 @@
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "json.schemas": [],
-    "aws.profile": "profile:cup-academic-services",
-    "typescript.updateImportsOnFileMove.enabled": "always"
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.suggest.showMethods": true,
+    "editor.suggest.preview": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.snippetSuggestions": "top",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[python]": {
+        "editor.formatOnType": true
+    }
 }
