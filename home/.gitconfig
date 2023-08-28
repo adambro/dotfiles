@@ -60,6 +60,8 @@
 
 	# Set upstream branch of the same name
 	set-upstream = "!f() { git branch --set-upstream-to=${1-origin}/$(git branch --show-current) $(git branch --show-current); }; f"
+	# Apply git command to all subfolders, see https://stackoverflow.com/a/29072745
+	all = "!f() { ls -R -d */.git | sed s,/.git,, | xargs -P10 -I{} git -C {} $1; }; f"
 
 [core]
 	editor = vim -c start
