@@ -113,5 +113,6 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "[python]": {
         "editor.formatOnType": true
-    }
+    },
+    "markdown.marp.exportType": "pptx"
 }
