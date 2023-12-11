@@ -33,6 +33,8 @@ gitclone() {
 }
 
 # official way https://github.com/sharkdp/bat#via-docker
-if [ ! -f "/usr/bin/bat" ]; then
+if [ ! -f "/usr/bin/batcat" ]; then
   alias bat='docker run -it --rm -e BAT_THEME -e BAT_STYLE -e BAT_TABS -v "$(pwd):/myapp" danlynn/bat';
+else
+  alias bat=batcat
 fi
