@@ -12,7 +12,7 @@ antigen bundle kubectl
 antigen bundle asdf
 
 # Load the theme.
-antigen bundle mafredri/zsh-async
+antigen bundle mafredri/zsh-async@main
 antigen bundle dfurnes/purer@main
 PURE_PROMPT_SYMBOL_COLOR=blue
 PURE_CMD_MAX_EXEC_TIME=10
