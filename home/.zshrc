@@ -31,3 +31,8 @@ antigen apply
 source ~/.aliases
 source ~/.profile
 source ~/bin/awsp.bash
+
+# It must be the last
+# https://asdf-vm.com/more/faq.html#shell-not-detecting-newly-installed-shims
+source $HOME/.asdf/asdf.sh
+
