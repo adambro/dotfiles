@@ -1,6 +1,5 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "workbench.colorTheme": "Solarized Dark",
     "window.menuBarVisibility": "toggle",
     "search.exclude": {
         "**/node_modules": true,
@@ -90,7 +89,6 @@
         "kubernetes"
     ],
     "cSpell.language": "en-GB,pl",
-    "markdown-preview-enhanced.previewTheme": "solarized-dark.css",
     "git.confirmSync": false,
     "redhat.telemetry.enabled": false,
     "workbench.editorAssociations": {
@@ -114,5 +112,9 @@
     "[python]": {
         "editor.formatOnType": true
     },
-    "markdown.marp.exportType": "pptx"
+    "markdown.marp.exportType": "pptx",
+    "makefile.configureOnOpen": false,
+    "markdown-preview-enhanced.previewColorScheme": "editorColorScheme",
+    "workbench.colorTheme": "Solarized Dark",
+    "markdown-preview-enhanced.previewTheme": "solarized-dark.css"
 }
