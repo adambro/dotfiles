@@ -1,5 +1,5 @@
-CREDENTIALS := ~/.aws ~/.ssh ~/.kube ~/.osprey ~/.config/git
-RM := rm -r -i # Change -i to -y when really need to wipe data.
+CREDENTIALS := ~/.aws ~/.ssh ~/.kube/config ~/.osprey ~/.config/git
+RM := rm -r -i # Change -i to -f when really need to wipe data.
 
 help: ## Display targets with comments.
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z._-]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
