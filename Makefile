@@ -11,7 +11,7 @@ config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User ~/bin ~/.npm-globa
 
 install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat ## Install CLI tools.
 
-apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser ~/opt/Obsidian ~/.local/bin/dasel /usr/bin/espanso ## Install GUI apps.
+apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser /snap/obsidian ~/.local/bin/dasel /usr/bin/espanso ## Install GUI apps.
 
 kube: /usr/bin/curl ~/.local/bin/kubectl ~/.krew ~/.local/bin/kubecolor ~/.local/bin/k9s ~/.local/bin/helm ## Install Kubernetes CLI tools.
 
@@ -56,13 +56,10 @@ backup_etc.tgz:
 	sudo snap connect btop:process-control
 	sudo snap connect btop:physical-memory-observe
 
-~/opt/Obsidian:
-	mkdir -p ~/opt
-	@$(eval VER = 0.13.19)
-	curl -sL -o $@ https://github.com/obsidianmd/obsidian-releases/releases/download/v$(VER)/Obsidian-$(VER).AppImage
-	chmod +x $@
-	envsubst < obsidian.desktop > $@
-	curl -sL -o ~/.local/share/icons/hicolor/128x128/apps/obsidian.png https://cdn.discordapp.com/icons/686053708261228577/1361e62fed2fee55c7885103c864e2a8.png
+/snap/obsidian:
+	sudo snap install obsidian
+	ln -s ~/.config/google-chrome ~/snap/obsidian/current/.config/google-chrome
+	ln -s ~/.config/mimeapps.list ~/snap/obsidian/current/.config/mimeapps.list
 
 /usr/bin/espanso:
 	$(eval URL = $(shell curl -sSLf https://api.github.com/repos/espanso/espanso/releases/latest | jq -r .name))
