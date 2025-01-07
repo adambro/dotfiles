@@ -142,7 +142,7 @@ curl: /usr/bin/curl
 
 ~/.local/bin/dasel: curl
 	mkdir -p ~/.local/bin
-	$(eval URL = $(shell curl -sSLf https://api.github.com/repos/tomwright/dasel/releases/latest | grep browser_download_url | grep linux_amd64 | cut -d\" -f 4))
+	$(eval URL = $(shell curl -sSLf https://api.github.com/repos/tomwright/dasel/releases/latest | grep browser_download_url | grep 'linux_amd64"' | cut -d\" -f 4))
 	curl -sL "$(URL)" -o $@
 	chmod +x $@
 
