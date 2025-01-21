@@ -9,7 +9,7 @@ all: config install kube apps ## Do all is needed for new laptop.
 config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User ~/bin ~/.npm-global ## Config system and tools.
 	dconf load /org/gnome/terminal/ < terminal-profile.cfg
 
-install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat ## Install CLI tools.
+install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat /usr/bin/delta ## Install CLI tools.
 
 apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser /snap/obsidian ~/.local/bin/dasel /usr/bin/espanso ## Install GUI apps.
 
@@ -60,6 +60,13 @@ backup_etc.tgz:
 	sudo snap install obsidian
 	ln -s ~/.config/google-chrome ~/snap/obsidian/current/.config/google-chrome
 	ln -s ~/.config/mimeapps.list ~/snap/obsidian/current/.config/mimeapps.list
+
+/usr/bin/delta:
+	sudo apt install git-delta
+	git config --global core.pager delta
+	git config --global interactive.diffFilter 'delta --color-only'
+	git config --global delta.navigate true
+	git config --global merge.conflictStyle zdiff3
 
 /usr/bin/espanso:
 	$(eval URL = $(shell curl -sSLf https://api.github.com/repos/espanso/espanso/releases/latest | jq -r .name))

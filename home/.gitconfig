@@ -66,6 +66,7 @@
 [core]
 	editor = vim -c start
 	autocrlf = input
+	pager = delta
 [push]
 	default = current
 	autoSetupRemote = true
@@ -82,3 +83,9 @@
 	date = iso
 [branch]
 	sort = -committerdate
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+[merge]
+	conflictStyle = zdiff3
