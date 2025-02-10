@@ -18,7 +18,7 @@ PURE_PROMPT_SYMBOL_COLOR=blue
 PURE_CMD_MAX_EXEC_TIME=10
 
 # Notifies when running command finished. 
-antigen bundle t413/zsh-background-notify
+antigen bundle bgnotify
 
 antigen bundle zsh-users/zsh-autosuggestions
 
