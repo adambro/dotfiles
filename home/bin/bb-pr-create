@@ -1,0 +1,48 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# Info: Creates Pull Request on Bitbucket from single-commit local branch.
+
+# Load PR contents from last commit.
+branch=$(git branch --show-current)
+subject=$(git log -1 --pretty=format:%s)
+body=$(git log -1 --pretty=format:%b)
+
+# Create PR
+URL=$(git remote get-url origin)
+owner=$(echo $URL | cut -d '/' -f 5)
+repo=$(basename "$URL" .git)
+
+# Minimal amount of fields for Bitbucket PR.
+PAYLOAD=$(
+cat << EOF
+    {
+        "title": "$subject",
+        "description": "$body",
+        "fromRef": {
+            "id": "refs/heads/$branch",
+            "repository": "$repo",
+            "project": {
+                "key": "$owner"
+            }
+        },
+        "toRef": {
+            "id": "refs/heads/main",
+            "repository": "$repo",
+            "project": {
+                "key": "$owner"
+            }
+        }
+    }
+EOF
+)
+
+# Bitbucket private URL with token credentials.
+BB_HOST=$(cat ~/.git-credentials)
+# Send request to Bitbucket server.
+RESPONSE=$(curl -s --json "$PAYLOAD" -X POST "$BB_HOST/rest/api/1.0/projects/$owner/repos/$repo/pull-requests")
+
+# Show either errors or URL of PR created.
+echo $RESPONSE | jq "[.errors, .links.self[0].href]"
+ 
