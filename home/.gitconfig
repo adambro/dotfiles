@@ -68,8 +68,9 @@
 	autocrlf = input
 	pager = delta
 [push]
-	default = current
+	default = simple
 	autoSetupRemote = true
+	followTags = true
 [pull]
 	rebase = false
 [rebase]
@@ -89,3 +90,15 @@
 	navigate = true
 [merge]
 	conflictStyle = zdiff3
+# https://blog.gitbutler.com/how-git-core-devs-configure-git/
+[tag]
+	sort = version:refname
+[init]
+	defaultBranch = main
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[commit]
+	verbose = true
