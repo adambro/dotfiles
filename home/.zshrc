@@ -19,6 +19,7 @@ PURE_CMD_MAX_EXEC_TIME=10
 
 # Notifies when running command finished. 
 antigen bundle bgnotify
+bgnotify_threshold=15
 
 antigen bundle zsh-users/zsh-autosuggestions
 
