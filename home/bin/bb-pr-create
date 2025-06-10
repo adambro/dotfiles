@@ -7,7 +7,8 @@ IFS=$'\n\t'
 # Load PR contents from last commit.
 branch=$(git branch --show-current)
 subject=$(git log -1 --pretty=format:%s)
-body=$(git log -1 --pretty=format:%b)
+# BB: Newline has to be escaped using backslash to be included in string value.
+body=$(git log -1 --pretty=format:%b | sed ':a;N;$!ba;s/\n/\\n/g')
 
 # Create PR
 URL=$(git remote get-url origin)
