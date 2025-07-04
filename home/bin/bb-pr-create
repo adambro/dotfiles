@@ -4,6 +4,9 @@ IFS=$'\n\t'
 
 # Info: Creates Pull Request on Bitbucket from single-commit local branch.
 
+# Merge to `main` by default, if not args provided.
+to_branch="${1:-main}"
+
 # Load PR contents from last commit.
 branch=$(git branch --show-current)
 subject=$(git log -1 --pretty=format:%s)
@@ -29,7 +32,7 @@ cat << EOF
             }
         },
         "toRef": {
-            "id": "refs/heads/main",
+            "id": "refs/heads/$to_branch",
             "repository": "$repo",
             "project": {
                 "key": "$owner"
