@@ -59,6 +59,7 @@ backup_etc.tgz:
 /snap/obsidian:
 	sudo snap install obsidian
 	ln -s ~/.config/google-chrome ~/snap/obsidian/current/.config/google-chrome
+	ln -s ~/.config/microsoft-edge ~/snap/obsidian/current/.config/microsoft-edge
 	ln -s ~/.config/mimeapps.list ~/snap/obsidian/current/.config/mimeapps.list
 
 /usr/bin/delta:
