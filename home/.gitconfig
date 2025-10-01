@@ -9,7 +9,7 @@
 	# email = adambro@o2.pl
 	name = Adam Brodziak
 [alias]
-	st = status
+	st = status -s
 	ci = commit
 	co = checkout
 	br = branch
