@@ -35,5 +35,6 @@ source ~/bin/awsp.bash
 
 # It must be the last
 # https://asdf-vm.com/more/faq.html#shell-not-detecting-newly-installed-shims
-source $HOME/.asdf/asdf.sh
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
+# end of .zshrc

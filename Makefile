@@ -9,7 +9,7 @@ all: config install kube apps ## Do all is needed for new laptop.
 config: /usr/bin/etckeeper ~/.antigen.zsh ~/.config/Code/User ~/bin ~/.npm-global ## Config system and tools.
 	dconf load /org/gnome/terminal/ < terminal-profile.cfg
 
-install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat /usr/bin/delta ## Install CLI tools.
+install: /usr/bin/etckeeper /usr/bin/jq /usr/bin/bat /usr/bin/delta ~/.local/bin/asdf ## Install CLI tools.
 
 apps: /usr/bin/dropbox /snap/btop /usr/bin/epiphany-browser /snap/obsidian ~/.local/bin/dasel /usr/bin/espanso ## Install GUI apps.
 
@@ -188,4 +188,10 @@ curl: /usr/bin/curl
 	@$(eval VER = 1.29.2)
 	curl -sL -o $@ "https://github.com/docker/compose/releases/download/$(VER)/docker-compose-Linux-x86_64"
 	sudo chmod +x $@
+
+~/.local/bin/asdf: curl
+	@$(eval VER = 0.18.0)
+	curl -sL -o /tmp/asdf.tar.gz "https://github.com/asdf-vm/asdf/releases/download/v$(VER)/asdf-v$(VER)-linux-amd64.tar.gz"
+	tar xzf /tmp/asdf.tar.gz --directory /tmp asdf
+	mv /tmp/asdf $@
 
