@@ -116,5 +116,7 @@
     "makefile.configureOnOpen": false,
     "markdown-preview-enhanced.previewColorScheme": "editorColorScheme",
     "workbench.colorTheme": "Solarized Dark",
-    "markdown-preview-enhanced.previewTheme": "solarized-dark.css"
+    "markdown-preview-enhanced.previewTheme": "solarized-dark.css",
+    "markdown.preview.fontSize": 18,
+    "claudeCode.preferredLocation": "panel"
 }
