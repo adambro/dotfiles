@@ -14,7 +14,7 @@ alias o=xdg-open
 alias ls="ls -CF"
 alias mkdir="mkdir -pv"
 alias wget="wget -c"
-alias histg="history | grep"
+alias histg="history | cut -c 8- | grep"
 
 # making GNU commands more user-friendly, not Unix-friendly
 # http://t-a-w.blogspot.com/2010/03/small-tips-for-making-unix-programming.html
