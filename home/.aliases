@@ -9,6 +9,7 @@ alias trash="gio trash"
 alias htop=btop
 alias top=btop
 alias o=xdg-open
+alias passgen="tr -dc A-Za-z0-9 </dev/urandom | head -c 13; echo"
 
 # https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions
 alias ls="ls -CF"
