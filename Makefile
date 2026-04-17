@@ -184,6 +184,12 @@ curl: /usr/bin/curl
 	tar xzf /tmp/helm.tar.gz --directory /tmp linux-amd64/helm
 	mv /tmp/linux-amd64/helm $@
 
+/usr/local/bin/kind:
+	@$(eval VER = 0.31.0)
+	curl -Lo ./kind https://kind.sigs.k8s.io/dl/v$(VER)/kind-linux-amd64
+	chmod +x ./kind
+	sudo mv ./kind /usr/local/bin/kind
+
 ~/.local/bin/docker-compose: curl
 	@$(eval VER = 1.29.2)
 	curl -sL -o $@ "https://github.com/docker/compose/releases/download/$(VER)/docker-compose-Linux-x86_64"
